@@ -1,0 +1,7 @@
+node_modules
+output
+/output.zip
+/output-*.zip
+.DS_Store
+.idea/
+src
