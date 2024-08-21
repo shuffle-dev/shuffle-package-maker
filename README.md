@@ -13,7 +13,7 @@ This tool simplifies the process of creating a UI library package for Shuffle. Y
 
 ### Install via npm
 
-1. Install `shuffle-library-maker` via your package manager (eg., `npm install shuffle-library-maker`).
+1. Install `shuffle-package-maker` via your package manager (eg., `npm install shuffle-package-maker`).
 
 ## Usage
 
