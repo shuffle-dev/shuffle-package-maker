@@ -9,6 +9,7 @@ import { createArchive } from './app/createArchive.mjs';
 import { importAssets } from './app/importAssets.mjs';
 import { loadPreset } from './app/loadPreset.mjs';
 import { prepareOutputDir } from './app/prepareOutputDir.mjs';
+import path from 'path';
 
 const OUTPUT_DIR = 'output';
 const ASSETS_DIRECTORY = 'assets';
@@ -24,7 +25,7 @@ program
     .requiredOption('-p, --preset <preset>', 'Preset to use')
     .action(async function (directory) {
         const options = program.opts();
-        const config = JSON.parse(fs.readFileSync('data/config.json', 'utf8'));
+        const config = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'data/config.json'), 'utf8'));
         const preset = await loadPreset(options.preset);
         const assetsDirectory = preset.assetsDirectory ?? ASSETS_DIRECTORY;
         const excludedPaths = _.concat(basicExcludedPaths, preset.componentsExcludedPaths ?? []);
