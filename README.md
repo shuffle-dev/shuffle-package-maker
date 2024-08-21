@@ -14,13 +14,12 @@ This tool simplifies the process of creating a UI library package for Shuffle. Y
 ### Install via npm
 
 1. Install `shuffle-library-maker` via your package manager (eg., `npm install shuffle-library-maker`).
-2. Run `npm install` in the root directory.
 
 ## Usage
 
 You can use presets to build packages for Tailwind UI and Flowbite components.
 
-1. Run `node generate.mjs DIRECTORY_NAME --preset PRESET_NAME` where `DIRECTORY_NAME` is the directory you want to scan for components and `PRESET_NAME` is name of the preset you want to use.
+1. Run `npx shuffle-package-maker DIRECTORY_NAME --preset PRESET_NAME` where `DIRECTORY_NAME` is the directory you want to scan for components and `PRESET_NAME` is name of the preset you want to use. If you cloned the repository, run script directly `node generate.mjs`.
 2. Follow the instructions in the terminal.
 3. Use the generated ZIP package and upload as new library in Shuffle.
 

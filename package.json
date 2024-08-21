@@ -1,6 +1,6 @@
 {
   "name": "shuffle-package-maker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shuffle allows you to upload your favorite purchased UI libraries (e.g., Tailwind UI, Flowbite) or one you made.",
   "main": "generate.mjs",
   "author": "efanpl",
@@ -21,5 +21,8 @@
   },
   "scripts": {
     "start": "node generate.mjs --help"
+  },
+  "bin": {
+    "shuffle-package-maker": "generate.mjs"
   }
 }
