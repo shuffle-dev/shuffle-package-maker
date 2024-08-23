@@ -28,7 +28,7 @@ export default {
         }
 
         const m = new Module('tailwind/config');
-        m.paths = [`${process.env.PWD}/node_modules/`];
+        m.paths = [`${directory}/node_modules/`];
         m._compile(content, 'tailwind/config');
         const cfg = m.exports.default || m.exports;
         if (cfg.plugins) {
@@ -41,4 +41,9 @@ export default {
         'flowbite/plugin',
         '@tailwindcss/typography'
     ],
+    preValidation: (directory) => {
+        if (!fs.existsSync(`${directory}/node_modules`)) {
+            throw new Error(`Please run 'npm install' in the directory ${directory} before running this script.`);
+        }
+    },
 }
