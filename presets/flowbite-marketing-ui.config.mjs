@@ -43,8 +43,7 @@ export default {
     ],
     preValidation: (directory) => {
         if (!fs.existsSync(`${directory}/node_modules`)) {
-            console.error(`Please run 'npm install' in the directory ${directory} before running this script.`);
-            return false;
+            throw new Error(`Please run 'npm install' in the directory ${directory} before running this script.`);
         }
     },
 }
