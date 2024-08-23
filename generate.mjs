@@ -3,13 +3,13 @@
 import { Command } from 'commander';
 import fs from 'fs';
 import _ from 'lodash-es';
+import path from 'path';
 import { copyFilesToOutput } from './app/componentsFiles.mjs';
 import { componentsPaths } from './app/componentsPaths.mjs';
 import { createArchive } from './app/createArchive.mjs';
 import { importAssets } from './app/importAssets.mjs';
 import { loadPreset } from './app/loadPreset.mjs';
 import { prepareOutputDir } from './app/prepareOutputDir.mjs';
-import path from 'path';
 
 const OUTPUT_DIR = 'output';
 const ASSETS_DIRECTORY = 'assets';
@@ -30,8 +30,8 @@ program
         const assetsDirectory = preset.assetsDirectory ?? ASSETS_DIRECTORY;
         const excludedPaths = _.concat(basicExcludedPaths, preset.componentsExcludedPaths ?? []);
 
-        if (preset.preValidation && !preset.preValidation()) {
-            throw new Error(`Preset ${options.preset} failed validation.`);
+        if (preset.preValidation && typeof preset.preValidation === 'function') {
+            preset.preValidation(directory);
         }
 
         _.assign(
