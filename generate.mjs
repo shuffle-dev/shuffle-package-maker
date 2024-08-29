@@ -3,7 +3,6 @@
 import { Command } from 'commander';
 import fs from 'fs';
 import _ from 'lodash-es';
-import path from 'path';
 import { copyFilesToOutput } from './app/componentsFiles.mjs';
 import { componentsPaths } from './app/componentsPaths.mjs';
 import { createArchive } from './app/createArchive.mjs';
@@ -26,7 +25,12 @@ program
     .action(async function (directory) {
         try {
             const options = program.opts();
-            const config = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'data/config.json'), 'utf8'));
+            const config = JSON.parse(
+                fs.readFileSync(
+                    new URL('data/config.json', import.meta.url),
+                    'utf8'
+                )
+            );
             const preset = await loadPreset(options.preset);
             const assetsDirectory = preset.assetsDirectory ?? ASSETS_DIRECTORY;
             const excludedPaths = _.concat(basicExcludedPaths, preset.componentsExcludedPaths ?? []);
