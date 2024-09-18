@@ -101,8 +101,7 @@ function categoriesFromImportedFiles(input) {
         return {
             id: hashCode(fileName),
             name: humanize(fileName),
-            // description: `${humanize(fileName)} description`,
-            html_file: `components/${file.filePath}`,
+            html_file: `components/${file.filePath.replaceAll('\\', '/')}`,
         };
     };
 
@@ -112,7 +111,6 @@ function categoriesFromImportedFiles(input) {
             const item = {
                 id: hashCode(currentKey),
                 name: humanize(key),
-                // description: `${humanize(key)} description`
             };
 
             if (Array.isArray(obj[key])) {
